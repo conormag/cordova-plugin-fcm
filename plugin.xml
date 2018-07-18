@@ -17,72 +17,72 @@
   specific language governing permissions and limitations
   under the License.
 -->
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-fcm"
-        version="2.1.2">
-    <name>FCMPlugin</name>
-    <description>Cordova FCM Plugin</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova, fcm, push, plugin</keywords>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-fcm" version="2.1.3">
+  <name>FCMPlugin</name>
+  <description>Cordova FCM Plugin</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova, fcm, push, plugin</keywords>
 
-    <info>
-		Cordova FCM plugin v2.1.2 installed
+  <info>
+		Cordova FCM plugin v2.1.3 installed
 		For more details visit https://github.com/conormag/cordova-plugin-fcm
 	</info>
 
-    <js-module src="www/FCMPlugin.js" name="FCMPlugin">
-	<clobbers target="FCMPlugin" />
-    </js-module>
+  <js-module src="www/FCMPlugin.js" name="FCMPlugin">
+	   <clobbers target="FCMPlugin" />
+  </js-module>
 
-    <engines>
-	<engine name="cordova-android" version=">=4.0.0" />
-    </engines>
+  <engines>
+	   <engine name="cordova-android" version=">=4.0.0" />
+  </engines>
 
-    <!-- ANDROID CONFIGURATION -->
-    <platform name="android">
-		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-			<activity android:exported="true" android:name="com.gae.scaffolder.plugin.FCMPluginActivity" android:launchMode="singleTop">
-				<intent-filter>
-					<action android:name="FCM_PLUGIN_ACTIVITY" />
-					<category android:name="android.intent.category.DEFAULT" />
-				</intent-filter>
-			</activity>
-			<service android:name="com.gae.scaffolder.plugin.MyFirebaseMessagingService">
-				<intent-filter>
-					<action android:name="com.google.firebase.MESSAGING_EVENT"/>
-				</intent-filter>
-			</service>
-			<service android:name="com.gae.scaffolder.plugin.MyFirebaseInstanceIDService">
-				<intent-filter>
-					<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-				</intent-filter>
-			</service>
-		</config-file>
-		<config-file target="res/xml/config.xml" parent="/*">
-			<feature name="FCMPlugin" >
-					<param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin"/>
-					<param name="onload" value="true" />
-				</feature>
-		</config-file>
+  <!-- ANDROID CONFIGURATION -->
+  <platform name="android">
+  	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+  		<activity android:exported="true" android:name="com.gae.scaffolder.plugin.FCMPluginActivity" android:launchMode="singleTop">
+  			<intent-filter>
+  				<action android:name="FCM_PLUGIN_ACTIVITY" />
+  				<category android:name="android.intent.category.DEFAULT" />
+  			</intent-filter>
+  		</activity>
 
-        <framework src="com.google.firebase:firebase-core:+" />
-        <framework src="com.google.firebase:firebase-messaging:+" />
+  		<service android:name="com.gae.scaffolder.plugin.MyFirebaseMessagingService">
+  			<intent-filter>
+  				<action android:name="com.google.firebase.MESSAGING_EVENT"/>
+  			</intent-filter>
+  		</service>
 
-		<framework src="src/android/FCMPlugin.gradle" custom="true" type="gradleReference"/>
+  		<service android:name="com.gae.scaffolder.plugin.MyFirebaseInstanceIDService">
+  			<intent-filter>
+  				<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+  			</intent-filter>
+  		</service>
+  	</config-file>
 
-		<source-file src="src/android/FCMPlugin.java" target-dir="src/com/gae/scaffolder/plugin" />
-		<source-file src="src/android/MyFirebaseMessagingService.java" target-dir="src/com/gae/scaffolder/plugin" />
-		<source-file src="src/android/MyFirebaseInstanceIDService.java" target-dir="src/com/gae/scaffolder/plugin" />
-		<source-file src="src/android/FCMPluginActivity.java" target-dir="src/com/gae/scaffolder/plugin" />
-    </platform>
+  	<config-file target="res/xml/config.xml" parent="/*">
+  		<feature name="FCMPlugin" >
+  			<param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin"/>
+  			<param name="onload" value="true" />
+  		</feature>
+  	</config-file>
 
-    <!-- IOS CONFIGURATION -->
-    <platform name="ios">
-        <config-file target="config.xml" parent="/*">
-            <feature name="FCMPlugin">
-                <param name="ios-package" value="FCMPlugin"/>
-            </feature>
-        </config-file>
+    <framework src="com.google.firebase:firebase-core:+" />
+    <framework src="com.google.firebase:firebase-messaging:+" />
+  	<framework src="src/android/FCMPlugin.gradle" custom="true" type="gradleReference"/>
+
+  	<source-file src="src/android/FCMPlugin.java" target-dir="src/com/gae/scaffolder/plugin" />
+  	<source-file src="src/android/MyFirebaseMessagingService.java" target-dir="src/com/gae/scaffolder/plugin" />
+  	<source-file src="src/android/MyFirebaseInstanceIDService.java" target-dir="src/com/gae/scaffolder/plugin" />
+  	<source-file src="src/android/FCMPluginActivity.java" target-dir="src/com/gae/scaffolder/plugin" />
+  </platform>
+
+  <!-- IOS CONFIGURATION -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="FCMPlugin">
+        <param name="ios-package" value="FCMPlugin"/>
+      </feature>
+    </config-file>
 
 		<!-- ENABLE PUSH CAPABILITY -->
 		<config-file parent="aps-environment" target="*/Entitlements-Debug.plist">
@@ -94,8 +94,8 @@
 
 		<resource-file src="src/ios/GoogleService-Info.plist" target="Resources/GoogleService-Info.plist" />
 
-        <header-file src="src/ios/FCMPlugin.h" />
-        <source-file src="src/ios/FCMPlugin.m" />
+    <header-file src="src/ios/FCMPlugin.h" />
+    <source-file src="src/ios/FCMPlugin.m" />
 
 		<header-file src="src/ios/AppDelegate+FCMPlugin.h" />
 		<source-file src="src/ios/AppDelegate+FCMPlugin.m" />
@@ -121,7 +121,7 @@
 		<framework src="libsqlite3.0.tbd" />
 		<framework src="libz.tbd" />
 		<framework src="Security.framework" />
-    </platform>
+  </platform>
 
 	<!-- COPY FCM CONFIG FILES TO PLATFORM AFTER PLUGIN INSTALL OR PLATFORM PREPARE -->
 	<hook src="scripts/fcm_config_files_process.js" type="after_plugin_add" />
